@@ -67,57 +67,63 @@ export function ProductCard({
   };
 
   const today = new Date().toISOString().split("T")[0];
+  const dateField =
+    "mt-1 w-full rounded-sm border border-line bg-cream px-3 py-2 text-ink";
 
   return (
-    <div className="flex flex-col rounded-lg border border-neutral-200 bg-white p-6">
+    <article className="flex flex-col border border-line bg-white p-7 transition-colors hover:border-ink-soft/40">
       {product.image && (
-        <div className="mb-4 flex h-48 items-center justify-center">
+        <div className="mb-6 flex h-56 items-center justify-center">
           <img
             src={product.image}
             alt={product.name}
-            className="h-full w-auto object-contain"
+            loading="lazy"
+            className="h-full w-auto object-contain mix-blend-multiply"
           />
         </div>
       )}
+
       {product.brand && (
-        <p className="mb-1 text-xs uppercase tracking-wide text-neutral-500">
+        <p className="mb-2 text-xs uppercase tracking-[0.18em] text-ochre">
           {product.brand}
         </p>
       )}
-      <h3 className="mb-2 text-xl font-bold">{product.name}</h3>
-      <p className="mb-4 flex-1 text-neutral-600">{product.description}</p>
+
+      <h3 className="mb-2 text-2xl leading-snug">{product.name}</h3>
+      <p className="mb-6 flex-1 text-sm leading-relaxed text-ink-soft">
+        {product.description}
+      </p>
 
       {isRoom && (
-        <div className="mb-4 grid gap-3 sm:grid-cols-2">
-          <label className="text-sm">
+        <div className="mb-6 grid gap-3 sm:grid-cols-2">
+          <label className="text-xs uppercase tracking-wide text-ink-soft">
             {t.arrival}
             <input
               type="date"
               min={today}
               value={checkIn}
               onChange={(e) => setCheckIn(e.target.value)}
-              className="mt-1 w-full rounded border border-neutral-300 px-3 py-2"
+              className={dateField}
             />
           </label>
-          <label className="text-sm">
+          <label className="text-xs uppercase tracking-wide text-ink-soft">
             {t.departure}
             <input
               type="date"
               min={checkIn || today}
               value={checkOut}
               onChange={(e) => setCheckOut(e.target.value)}
-              className="mt-1 w-full rounded border border-neutral-300 px-3 py-2"
+              className={dateField}
             />
           </label>
         </div>
       )}
 
-      <div className="flex items-center justify-between">
-        <span className="text-2xl font-bold text-green-700">
+      <div className="flex items-end justify-between border-t border-line pt-5">
+        <span className="font-display text-2xl text-ink">
           €{product.price.toFixed(2)}
           {isRoom && (
-            <span className="text-sm font-normal text-neutral-500">
-              {" "}
+            <span className="ml-1 font-sans text-xs tracking-wide text-ink-soft">
               {t.perNight}
             </span>
           )}
@@ -125,11 +131,11 @@ export function ProductCard({
         <button
           onClick={addToCart}
           disabled={product.soldOut}
-          className="rounded bg-black px-4 py-2 text-white hover:bg-neutral-800 disabled:cursor-not-allowed disabled:bg-neutral-300"
+          className="rounded-sm bg-ink px-5 py-2.5 text-sm tracking-wide text-cream transition-colors hover:bg-olive disabled:cursor-not-allowed disabled:bg-line disabled:text-ink-soft"
         >
           {product.soldOut ? t.soldOut : isRoom ? t.book : t.add}
         </button>
       </div>
-    </div>
+    </article>
   );
 }

@@ -55,17 +55,17 @@ export function CartView({ t, locale }: { t: Dictionary; locale: Locale }) {
   };
 
   if (!loaded) {
-    return <div className="mx-auto max-w-4xl px-4 py-16">{t.loading}</div>;
+    return <div className="mx-auto max-w-3xl px-6 py-20">{t.loading}</div>;
   }
 
   if (items.length === 0) {
     return (
-      <div className="mx-auto max-w-4xl px-4 py-16 text-center">
-        <h1 className="mb-4 text-4xl font-bold">{t.cart}</h1>
-        <p className="text-xl text-neutral-600">{t.emptyCart}</p>
+      <div className="mx-auto max-w-3xl px-6 py-24 text-center">
+        <h1 className="mb-4 text-5xl tracking-tight">{t.cart}</h1>
+        <p className="text-lg text-ink-soft">{t.emptyCart}</p>
         <a
           href="/shop"
-          className="mt-8 inline-block rounded bg-black px-6 py-3 text-white hover:bg-neutral-800"
+          className="mt-10 inline-block border border-ink px-8 py-3 text-sm uppercase tracking-[0.15em] transition-colors hover:bg-ink hover:text-cream"
         >
           {t.goToShop}
         </a>
@@ -74,36 +74,36 @@ export function CartView({ t, locale }: { t: Dictionary; locale: Locale }) {
   }
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16">
-      <h1 className="mb-8 text-4xl font-bold">{t.cart}</h1>
+    <div className="mx-auto max-w-3xl px-6 py-20">
+      <h1 className="mb-10 text-5xl tracking-tight">{t.cart}</h1>
 
       <div className="space-y-4">
         {items.map((item, idx) => (
           <div
             key={`${item.id}-${idx}`}
-            className="flex items-center justify-between border-b border-neutral-200 pb-4"
+            className="flex items-start justify-between border-b border-line py-5"
           >
             <div>
-              <h2 className="font-bold">{item.name}</h2>
-              <p className="text-sm text-neutral-600">
+              <h2 className="text-lg">{item.name}</h2>
+              <p className="mt-1 text-sm text-ink-soft">
                 {t.quantity}: {item.quantity}
               </p>
               <button
                 onClick={() => removeItem(idx)}
-                className="mt-1 text-sm text-red-600 hover:underline"
+                className="mt-2 text-xs uppercase tracking-wide text-ink-soft hover:text-ochre"
               >
                 {t.remove}
               </button>
             </div>
-            <span className="text-lg font-bold">
+            <span className="font-display text-xl">
               €{(item.price * item.quantity).toFixed(2)}
             </span>
           </div>
         ))}
       </div>
 
-      <div className="mt-8 space-y-4 border-t border-neutral-200 pt-8">
-        <div className="flex items-center justify-between text-2xl font-bold">
+      <div className="mt-10 space-y-5 border-t border-line pt-8">
+        <div className="flex items-center justify-between font-display text-3xl">
           <span>{t.total}</span>
           <span>€{total.toFixed(2)}</span>
         </div>
@@ -111,14 +111,14 @@ export function CartView({ t, locale }: { t: Dictionary; locale: Locale }) {
         <button
           onClick={checkout}
           disabled={busy}
-          className="w-full rounded bg-green-700 px-6 py-4 text-lg font-bold text-white hover:bg-green-800 disabled:opacity-50"
+          className="w-full rounded-sm bg-olive px-6 py-4 text-sm uppercase tracking-[0.15em] text-cream transition-colors hover:bg-olive-deep disabled:opacity-50"
         >
           {busy ? t.working : t.checkout}
         </button>
 
         <a
           href="/shop"
-          className="block text-center text-neutral-600 hover:underline"
+          className="block text-center text-sm text-ink-soft hover:text-ink"
         >
           {t.keepShopping}
         </a>

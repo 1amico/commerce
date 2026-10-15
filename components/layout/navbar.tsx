@@ -3,20 +3,23 @@ import type { Dictionary } from "lib/i18n";
 
 export function Navbar({ t }: { t: Dictionary }) {
   return (
-    <nav className="border-b border-neutral-200 bg-white">
-      <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4">
-        <Link href="/" className="text-2xl font-bold">
-          Ca' Paradiso Cagli
+    <nav className="sticky top-0 z-20 border-b border-line bg-cream/85 backdrop-blur">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
+        <Link
+          href="/"
+          className="font-display text-2xl tracking-tight text-ink hover:text-olive"
+        >
+          Ca'&nbsp;Paradiso <span className="text-ink-soft">Cagli</span>
         </Link>
 
-        <div className="flex gap-6">
-          <Link href="/shop" className="hover:text-neutral-600">
+        <div className="flex gap-7 text-sm tracking-wide text-ink-soft">
+          <Link href="/shop" className="hover:text-ink">
             {t.nav.shop}
           </Link>
-          <Link href="/cart" className="hover:text-neutral-600">
+          <Link href="/cart" className="hover:text-ink">
             {t.nav.cart}
           </Link>
-          <Link href="#contact" className="hover:text-neutral-600">
+          <Link href="#contact" className="hover:text-ink">
             {t.nav.contact}
           </Link>
         </div>

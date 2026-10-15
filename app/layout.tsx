@@ -1,4 +1,5 @@
 import { GeistSans } from "geist/font/sans";
+import { EB_Garamond } from "next/font/google";
 import { headers } from "next/headers";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
@@ -6,6 +7,12 @@ import "./globals.css";
 import { Navbar } from "components/layout/navbar";
 import { defaultLocale, getDictionary, isLocale } from "lib/i18n";
 import { baseUrl } from "lib/utils";
+
+const display = EB_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-display",
+});
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
@@ -29,8 +36,11 @@ export default async function RootLayout({
   const t = getDictionary(locale);
 
   return (
-    <html lang={locale} className={GeistSans.variable}>
-      <body className="bg-neutral-50 text-black selection:bg-amber-300">
+    <html
+      lang={locale}
+      className={`${GeistSans.variable} ${display.variable}`}
+    >
+      <body className="selection:bg-ochre/25">
         <Navbar t={t} />
         <main>
           {children}

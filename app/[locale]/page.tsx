@@ -18,39 +18,57 @@ export default async function HomePage({
 
   const t = getDictionary(locale);
   const products = await getProducts(locale);
-  const highlights = (["eggs", "honey", "accommodation"] as const).map(
-    (category) => products.find((p) => p.category === category)!
-  );
+
+  const highlights = (
+    [
+      ["eggs", t.eggs],
+      ["honey", t.honey],
+      ["accommodation", t.rooms],
+    ] as const
+  )
+    .map(([category, label]) => ({
+      label,
+      product: products.find((p) => p.category === category),
+    }))
+    .filter((h) => h.product);
 
   return (
     <>
-      <section className="mx-auto max-w-4xl px-4 py-20 text-center">
-        <h1 className="text-5xl font-bold tracking-tight">Ca' Paradiso Cagli</h1>
-        <p className="mx-auto mt-6 max-w-xl text-xl text-neutral-600">
+      <section className="mx-auto max-w-3xl px-6 py-28 text-center">
+        <p className="mb-6 text-xs uppercase tracking-[0.3em] text-ochre">
+          Cagli · Marche
+        </p>
+        <h1 className="text-6xl leading-[1.05] tracking-tight">Ca' Paradiso</h1>
+        <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-ink-soft">
           {t.tagline}
         </p>
         <Link
           href="/shop"
-          className="mt-10 inline-block rounded bg-black px-8 py-4 text-lg font-medium text-white hover:bg-neutral-800"
+          className="mt-12 inline-block border border-ink px-10 py-4 text-sm uppercase tracking-[0.15em] text-ink transition-colors hover:bg-ink hover:text-cream"
         >
           {t.goToShop}
         </Link>
       </section>
 
-      <section className="mx-auto max-w-4xl px-4 pb-20">
-        <div className="grid gap-6 sm:grid-cols-3">
-          {highlights.map((product) => (
+      <section className="mx-auto max-w-5xl px-6 pb-28">
+        <div className="grid gap-px bg-line sm:grid-cols-3">
+          {highlights.map(({ label, product }) => (
             <Link
-              key={product.id}
+              key={product!.id}
               href="/shop"
-              className="rounded-lg border border-neutral-200 bg-white p-6 hover:border-neutral-400"
+              className="group bg-cream p-8 transition-colors hover:bg-white"
             >
-              <h2 className="text-lg font-bold">{product.name}</h2>
-              <p className="mt-2 text-sm text-neutral-600">
-                {product.description}
+              <p className="mb-3 text-xs uppercase tracking-[0.18em] text-ochre">
+                {label}
               </p>
-              <p className="mt-4 text-xl font-bold text-green-700">
-                {t.from} €{product.price.toFixed(2)}
+              <h2 className="text-2xl leading-snug group-hover:text-olive">
+                {product!.name}
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+                {product!.description}
+              </p>
+              <p className="mt-5 font-display text-xl">
+                {t.from} €{product!.price.toFixed(2)}
               </p>
             </Link>
           ))}

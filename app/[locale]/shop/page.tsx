@@ -54,14 +54,14 @@ export default async function ShopPage({
 
   return (
     <>
-      <div className="mx-auto max-w-4xl px-4 py-16">
-        <h1 className="mb-12 text-4xl font-bold">{t.shopTitle}</h1>
+      <div className="mx-auto max-w-5xl px-6 py-20">
+        <h1 className="mb-16 text-5xl tracking-tight">{t.shopTitle}</h1>
 
         {sections.map((section) => (
-          <section key={section.category} className="mb-16">
-            <h2 className="mb-4 text-3xl font-bold">{section.title}</h2>
+          <section key={section.category} className="mb-20">
+            <h2 className="mb-5 text-3xl tracking-tight">{section.title}</h2>
             {section.notes.length > 0 && (
-              <div className="mb-6 space-y-1 rounded-lg bg-amber-50 p-4 text-sm text-neutral-700">
+              <div className="mb-8 space-y-1 border-l-2 border-ochre bg-cream-deep px-5 py-4 text-sm leading-relaxed text-ink-soft">
                 {section.notes.map((note) => (
                   <p key={note}>{note}</p>
                 ))}

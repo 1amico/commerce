@@ -20,21 +20,21 @@ export default async function SuccessPage({
   return (
     <>
       <ClearCart />
-      <div className="mx-auto max-w-2xl px-4 py-16 text-center">
-        <h1 className="mb-4 text-4xl font-bold">{t.successTitle}</h1>
-        <p className="mb-10 text-xl text-neutral-600">{t.successLead}</p>
+      <div className="mx-auto max-w-2xl px-6 py-24 text-center">
+        <h1 className="mb-5 text-5xl tracking-tight">{t.successTitle}</h1>
+        <p className="mb-12 text-lg text-ink-soft">{t.successLead}</p>
 
-        <div className="space-y-4 rounded-lg bg-neutral-100 p-8 text-left">
+        <div className="space-y-4 border-l-2 border-ochre bg-cream-deep px-7 py-8 text-left leading-relaxed text-ink-soft">
           <p>{t.successEmail}</p>
           <p>{t.successBooking}</p>
-          <p className="text-neutral-600">
+          <p className="text-ink-soft">
             Ca' Paradiso Cagli — info@caparadiso.com
           </p>
         </div>
 
         <a
           href="/"
-          className="mt-8 inline-block rounded bg-black px-6 py-3 text-white hover:bg-neutral-800"
+          className="mt-12 inline-block border border-ink px-8 py-3 text-sm uppercase tracking-[0.15em] transition-colors hover:bg-ink hover:text-cream"
         >
           {t.backHome}
         </a>
