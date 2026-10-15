@@ -28,7 +28,7 @@ export default async function ShopPage({
   if (!isLocale(locale)) notFound();
 
   const t = getDictionary(locale);
-  const products = getProducts(locale);
+  const products = await getProducts(locale);
 
   const sections = [
     { title: t.eggs, category: "eggs" as const, notes: [] as string[] },

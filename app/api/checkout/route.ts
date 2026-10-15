@@ -16,7 +16,7 @@ export async function POST(request: Request) {
   const lineItems = [];
   let needsShipping = false;
   for (const item of items) {
-    const product = getProductById(item?.id);
+    const product = await getProductById(item?.id);
     if (!product) {
       return Response.json(
         { error: `Prodotto non valido: ${item?.id}` },

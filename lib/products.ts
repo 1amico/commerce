@@ -1,4 +1,5 @@
 import { collinaDelleFate } from "./catalog/collina-delle-fate";
+import { fetchCatalogue } from "./catalog/sheet";
 import type { Locale } from "./i18n";
 
 type Translated = Record<Locale, { name: string; description: string }>;
@@ -442,10 +443,17 @@ export const products: Product[] = [
   },
 ];
 
+/** Catalogo compilato nel codice: vale da riserva se il foglio non risponde. */
 export const catalogue: Product[] = [...products, ...collinaDelleFate];
 
-export function getProductById(id: string): Product | undefined {
-  return catalogue.find((p) => p.id === id);
+export async function getCatalogue(): Promise<Product[]> {
+  return (await fetchCatalogue()) ?? catalogue;
+}
+
+export async function getProductById(
+  id: string
+): Promise<Product | undefined> {
+  return (await getCatalogue()).find((p) => p.id === id);
 }
 
 export function localize(product: Product, locale: Locale): LocalizedProduct {
@@ -460,6 +468,8 @@ export function localize(product: Product, locale: Locale): LocalizedProduct {
   };
 }
 
-export function getProducts(locale: Locale): LocalizedProduct[] {
-  return catalogue.map((p) => localize(p, locale));
+export async function getProducts(
+  locale: Locale
+): Promise<LocalizedProduct[]> {
+  return (await getCatalogue()).map((p) => localize(p, locale));
 }

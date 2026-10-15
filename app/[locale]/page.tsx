@@ -17,7 +17,7 @@ export default async function HomePage({
   if (!isLocale(locale)) notFound();
 
   const t = getDictionary(locale);
-  const products = getProducts(locale);
+  const products = await getProducts(locale);
   const highlights = (["eggs", "honey", "accommodation"] as const).map(
     (category) => products.find((p) => p.category === category)!
   );
