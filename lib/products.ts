@@ -1,20 +1,37 @@
+import { collinaDelleFate } from "./catalog/collina-delle-fate";
 import type { Locale } from "./i18n";
 
 type Translated = Record<Locale, { name: string; description: string }>;
 
+export type Category =
+  | "eggs"
+  | "honey"
+  | "accommodation"
+  | "wine"
+  | "sparkling"
+  | "oil"
+  | "ev-charging";
+
 export interface Product {
   id: string;
   price: number;
-  category: "eggs" | "honey" | "accommodation";
+  category: Category;
   t: Translated;
+  image?: string;
+  /** Marchio del produttore, quando rivendiamo per conto di qualcun altro. */
+  brand?: string;
+  soldOut?: boolean;
 }
 
 export interface LocalizedProduct {
   id: string;
   price: number;
-  category: Product["category"];
+  category: Category;
   name: string;
   description: string;
+  image?: string;
+  brand?: string;
+  soldOut?: boolean;
 }
 
 export const products: Product[] = [
@@ -425,8 +442,10 @@ export const products: Product[] = [
   },
 ];
 
+export const catalogue: Product[] = [...products, ...collinaDelleFate];
+
 export function getProductById(id: string): Product | undefined {
-  return products.find((p) => p.id === id);
+  return catalogue.find((p) => p.id === id);
 }
 
 export function localize(product: Product, locale: Locale): LocalizedProduct {
@@ -434,10 +453,13 @@ export function localize(product: Product, locale: Locale): LocalizedProduct {
     id: product.id,
     price: product.price,
     category: product.category,
+    image: product.image,
+    brand: product.brand,
+    soldOut: product.soldOut,
     ...product.t[locale],
   };
 }
 
 export function getProducts(locale: Locale): LocalizedProduct[] {
-  return products.map((p) => localize(p, locale));
+  return catalogue.map((p) => localize(p, locale));
 }

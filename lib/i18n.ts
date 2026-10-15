@@ -57,6 +57,11 @@ export const dictionaries = {
       "Pulizie finali da 30 a 60 € secondo l'alloggio, da pagare in struttura. Colazione su richiesta.",
     availabilityNote:
       "La disponibilità viene confermata via email: se le date non fossero libere, l'importo viene rimborsato per intero.",
+    soldOut: "Esaurito",
+    wine: "Vini",
+    sparkling: "Bollicine",
+    oil: "Oli extravergine",
+    evCharging: "Ricarica elettrica",
   },
   en: {
     lang: "en",
@@ -100,6 +105,11 @@ export const dictionaries = {
       "Final cleaning from €30 to €60 depending on the unit, payable on arrival. Breakfast on request.",
     availabilityNote:
       "Availability is confirmed by email: if your dates turn out to be taken, you are refunded in full.",
+    soldOut: "Sold out",
+    wine: "Wines",
+    sparkling: "Sparkling wines",
+    oil: "Extra virgin olive oils",
+    evCharging: "EV charging",
   },
   fr: {
     lang: "fr",
@@ -143,6 +153,11 @@ export const dictionaries = {
       "Ménage de fin de séjour de 30 à 60 € selon le logement, à régler sur place. Petit-déjeuner sur demande.",
     availabilityNote:
       "La disponibilité est confirmée par e-mail : si vos dates ne sont plus libres, vous êtes intégralement remboursé.",
+    soldOut: "Épuisé",
+    wine: "Vins",
+    sparkling: "Effervescents",
+    oil: "Huiles d'olive vierge extra",
+    evCharging: "Recharge électrique",
   },
   de: {
     lang: "de",
@@ -187,6 +202,11 @@ export const dictionaries = {
       "Endreinigung je nach Unterkunft 30 bis 60 €, vor Ort zu zahlen. Frühstück auf Anfrage.",
     availabilityNote:
       "Die Verfügbarkeit wird per E-Mail bestätigt: Sind Ihre Daten bereits belegt, erhalten Sie den vollen Betrag zurück.",
+    soldOut: "Ausverkauft",
+    wine: "Weine",
+    sparkling: "Schaumweine",
+    oil: "Native Olivenöle extra",
+    evCharging: "E-Auto-Ladelösungen",
   },
   es: {
     lang: "es",
@@ -231,6 +251,11 @@ export const dictionaries = {
       "Limpieza final de 30 a 60 € según el alojamiento, a pagar en el establecimiento. Desayuno bajo petición.",
     availabilityNote:
       "La disponibilidad se confirma por correo: si las fechas ya no están libres, se te devuelve el importe íntegro.",
+    soldOut: "Agotado",
+    wine: "Vinos",
+    sparkling: "Espumosos",
+    oil: "Aceites de oliva virgen extra",
+    evCharging: "Recarga eléctrica",
   },
 } as const;
 

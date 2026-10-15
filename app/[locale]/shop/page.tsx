@@ -33,12 +33,24 @@ export default async function ShopPage({
   const sections = [
     { title: t.eggs, category: "eggs" as const, notes: [] as string[] },
     { title: t.honey, category: "honey" as const, notes: [] as string[] },
+    { title: t.wine, category: "wine" as const, notes: [] as string[] },
+    {
+      title: t.sparkling,
+      category: "sparkling" as const,
+      notes: [] as string[],
+    },
+    { title: t.oil, category: "oil" as const, notes: [] as string[] },
+    {
+      title: t.evCharging,
+      category: "ev-charging" as const,
+      notes: [] as string[],
+    },
     {
       title: t.rooms,
       category: "accommodation" as const,
       notes: [t.cleaningNote, t.availabilityNote],
     },
-  ];
+  ].filter((s) => products.some((p) => p.category === s.category));
 
   return (
     <>

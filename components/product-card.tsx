@@ -69,9 +69,23 @@ export function ProductCard({
   const today = new Date().toISOString().split("T")[0];
 
   return (
-    <div className="rounded-lg border border-neutral-200 bg-white p-6">
+    <div className="flex flex-col rounded-lg border border-neutral-200 bg-white p-6">
+      {product.image && (
+        <div className="mb-4 flex h-48 items-center justify-center">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="h-full w-auto object-contain"
+          />
+        </div>
+      )}
+      {product.brand && (
+        <p className="mb-1 text-xs uppercase tracking-wide text-neutral-500">
+          {product.brand}
+        </p>
+      )}
       <h3 className="mb-2 text-xl font-bold">{product.name}</h3>
-      <p className="mb-4 text-neutral-600">{product.description}</p>
+      <p className="mb-4 flex-1 text-neutral-600">{product.description}</p>
 
       {isRoom && (
         <div className="mb-4 grid gap-3 sm:grid-cols-2">
@@ -110,9 +124,10 @@ export function ProductCard({
         </span>
         <button
           onClick={addToCart}
-          className="rounded bg-black px-4 py-2 text-white hover:bg-neutral-800"
+          disabled={product.soldOut}
+          className="rounded bg-black px-4 py-2 text-white hover:bg-neutral-800 disabled:cursor-not-allowed disabled:bg-neutral-300"
         >
-          {isRoom ? t.book : t.add}
+          {product.soldOut ? t.soldOut : isRoom ? t.book : t.add}
         </button>
       </div>
     </div>
