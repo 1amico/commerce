@@ -33,15 +33,14 @@ export default function SuccessPage() {
             <div>
               <h3 className="font-bold">🛏️ Per le Prenotazioni</h3>
               <p className="text-neutral-600">
-                Ti contatteremo al numero fornito per confermare le date
+                Ti scriveremo via email per confermare le date
               </p>
             </div>
 
             <div>
-              <h3 className="font-bold">📞 Contatti</h3>
+              <h3 className="font-bold">Contatti</h3>
               <p className="text-neutral-600">
                 Ca' Paradiso Cagli<br />
-                Tel: +39 721 787 307<br />
                 Email: info@caparadiso.com
               </p>
             </div>
