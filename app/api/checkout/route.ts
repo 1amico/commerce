@@ -1,5 +1,6 @@
 import Stripe from "stripe";
 import { getProductById } from "lib/products";
+import { baseUrl } from "lib/utils";
 
 export async function POST(request: Request) {
   const { items } = await request.json();
@@ -44,7 +45,6 @@ export async function POST(request: Request) {
     return Response.json({ error: "Stripe non configurato" }, { status: 500 });
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
   const stripe = new Stripe(secretKey);
 
   try {
