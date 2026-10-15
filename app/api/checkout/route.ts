@@ -1,6 +1,7 @@
 import Stripe from "stripe";
 import { defaultLocale, isLocale } from "lib/i18n";
 import { getProductById, localize } from "lib/products";
+import { shippingCountries, toStripeShippingOptions } from "lib/shipping";
 import { baseUrl } from "lib/utils";
 
 export async function POST(request: Request) {
@@ -13,6 +14,7 @@ export async function POST(request: Request) {
 
   // I prezzi vengono sempre dal catalogo server, mai dal client.
   const lineItems = [];
+  let needsShipping = false;
   for (const item of items) {
     const product = getProductById(item?.id);
     if (!product) {
@@ -26,6 +28,8 @@ export async function POST(request: Request) {
     if (!Number.isFinite(quantity) || quantity < 1 || quantity > 99) {
       return Response.json({ error: "Quantità non valida" }, { status: 400 });
     }
+
+    if (product.category !== "accommodation") needsShipping = true;
 
     const { name, description } = localize(product, locale);
 
@@ -59,6 +63,14 @@ export async function POST(request: Request) {
       line_items: lineItems,
       success_url: `${baseUrl}/${locale}/success`,
       cancel_url: `${baseUrl}/${locale}/cart`,
+      // Un soggiorno non si spedisce: le opzioni compaiono solo se nel
+      // carrello c'è almeno un prodotto fisico.
+      ...(needsShipping && {
+        shipping_address_collection: {
+          allowed_countries: [...shippingCountries],
+        },
+        shipping_options: toStripeShippingOptions(locale),
+      }),
     });
 
     return Response.json({ url: session.url });

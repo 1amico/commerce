@@ -25,23 +25,28 @@ export const products: Product[] = [
     t: {
       it: {
         name: "Uova naturali (confezione da 4)",
-        description: "Uova fresche di galline allevate all'aperto, raccolte ogni giorno.",
+        description:
+          "Uova fresche di galline allevate all'aperto, raccolte ogni giorno.",
       },
       en: {
         name: "Free-range eggs (box of 4)",
-        description: "Fresh eggs from hens raised outdoors, collected every morning.",
+        description:
+          "Fresh eggs from hens raised outdoors, collected every morning.",
       },
       fr: {
         name: "Œufs fermiers (boîte de 4)",
-        description: "Œufs frais de poules élevées en plein air, ramassés chaque jour.",
+        description:
+          "Œufs frais de poules élevées en plein air, ramassés chaque jour.",
       },
       de: {
         name: "Eier aus Freilandhaltung (4er-Packung)",
-        description: "Frische Eier von Hühnern aus Freilandhaltung, täglich gesammelt.",
+        description:
+          "Frische Eier von Hühnern aus Freilandhaltung, täglich gesammelt.",
       },
       es: {
         name: "Huevos camperos (caja de 4)",
-        description: "Huevos frescos de gallinas criadas al aire libre, recogidos cada día.",
+        description:
+          "Huevos frescos de gallinas criadas al aire libre, recogidos cada día.",
       },
     },
   },
@@ -52,23 +57,28 @@ export const products: Product[] = [
     t: {
       it: {
         name: "Uova naturali (confezione da 6)",
-        description: "Uova fresche di galline allevate all'aperto, raccolte ogni giorno.",
+        description:
+          "Uova fresche di galline allevate all'aperto, raccolte ogni giorno.",
       },
       en: {
         name: "Free-range eggs (box of 6)",
-        description: "Fresh eggs from hens raised outdoors, collected every morning.",
+        description:
+          "Fresh eggs from hens raised outdoors, collected every morning.",
       },
       fr: {
         name: "Œufs fermiers (boîte de 6)",
-        description: "Œufs frais de poules élevées en plein air, ramassés chaque jour.",
+        description:
+          "Œufs frais de poules élevées en plein air, ramassés chaque jour.",
       },
       de: {
         name: "Eier aus Freilandhaltung (6er-Packung)",
-        description: "Frische Eier von Hühnern aus Freilandhaltung, täglich gesammelt.",
+        description:
+          "Frische Eier von Hühnern aus Freilandhaltung, täglich gesammelt.",
       },
       es: {
         name: "Huevos camperos (caja de 6)",
-        description: "Huevos frescos de gallinas criadas al aire libre, recogidos cada día.",
+        description:
+          "Huevos frescos de gallinas criadas al aire libre, recogidos cada día.",
       },
     },
   },
@@ -79,23 +89,28 @@ export const products: Product[] = [
     t: {
       it: {
         name: "Uova naturali (confezione da 10)",
-        description: "Uova fresche di galline allevate all'aperto, raccolte ogni giorno.",
+        description:
+          "Uova fresche di galline allevate all'aperto, raccolte ogni giorno.",
       },
       en: {
         name: "Free-range eggs (box of 10)",
-        description: "Fresh eggs from hens raised outdoors, collected every morning.",
+        description:
+          "Fresh eggs from hens raised outdoors, collected every morning.",
       },
       fr: {
         name: "Œufs fermiers (boîte de 10)",
-        description: "Œufs frais de poules élevées en plein air, ramassés chaque jour.",
+        description:
+          "Œufs frais de poules élevées en plein air, ramassés chaque jour.",
       },
       de: {
         name: "Eier aus Freilandhaltung (10er-Packung)",
-        description: "Frische Eier von Hühnern aus Freilandhaltung, täglich gesammelt.",
+        description:
+          "Frische Eier von Hühnern aus Freilandhaltung, täglich gesammelt.",
       },
       es: {
         name: "Huevos camperos (caja de 10)",
-        description: "Huevos frescos de gallinas criadas al aire libre, recogidos cada día.",
+        description:
+          "Huevos frescos de gallinas criadas al aire libre, recogidos cada día.",
       },
     },
   },
@@ -164,83 +179,247 @@ export const products: Product[] = [
     },
   },
   {
-    id: "room-001",
-    price: 80.0,
+    id: "room-divano-singolo",
+    price: 29.0,
     category: "accommodation",
     t: {
       it: {
-        name: "Camera matrimoniale",
-        description: "Camera con vista sulla campagna, letto matrimoniale e bagno privato.",
+        name: "Divano Letto Singolo",
+        description: "Fino a 1 ospite · bagno privato esterno.",
       },
       en: {
-        name: "Double room",
-        description: "Room overlooking the countryside, double bed and private bathroom.",
+        name: "Single Sofa Bed",
+        description: "Up to 1 guest · private bathroom outside the room.",
       },
       fr: {
-        name: "Chambre double",
-        description: "Chambre avec vue sur la campagne, lit double et salle de bains privée.",
+        name: "Canapé-lit simple",
+        description:
+          "Jusqu'à 1 personne · salle de bains privée à l'extérieur.",
       },
       de: {
-        name: "Doppelzimmer",
-        description: "Zimmer mit Blick ins Grüne, Doppelbett und eigenem Bad.",
+        name: "Einzel-Schlafsofa",
+        description: "Für 1 Gast · eigenes Bad außerhalb des Zimmers.",
       },
       es: {
-        name: "Habitación doble",
-        description: "Habitación con vistas al campo, cama de matrimonio y baño privado.",
+        name: "Sofá cama individual",
+        description: "Hasta 1 huésped · baño privado fuera de la habitación.",
       },
     },
   },
   {
-    id: "room-002",
-    price: 50.0,
+    id: "room-divano-matrimoniale",
+    price: 59.0,
     category: "accommodation",
     t: {
       it: {
-        name: "Camera singola",
-        description: "Camera accogliente con letto singolo e bagno privato.",
+        name: "Divano Letto Matrimoniale 1º piano",
+        description: "Fino a 2 ospiti · bagno condiviso.",
       },
       en: {
-        name: "Single room",
-        description: "Cosy room with a single bed and private bathroom.",
+        name: "Double Sofa Bed, first floor",
+        description: "Up to 2 guests · shared bathroom.",
       },
       fr: {
-        name: "Chambre simple",
-        description: "Chambre chaleureuse avec lit simple et salle de bains privée.",
+        name: "Canapé-lit double, 1er étage",
+        description: "Jusqu'à 2 personnes · salle de bains partagée.",
       },
       de: {
-        name: "Einzelzimmer",
-        description: "Gemütliches Zimmer mit Einzelbett und eigenem Bad.",
+        name: "Doppel-Schlafsofa, 1. Stock",
+        description: "Bis zu 2 Gäste · Gemeinschaftsbad.",
       },
       es: {
-        name: "Habitación individual",
-        description: "Habitación acogedora con cama individual y baño privado.",
+        name: "Sofá cama doble, primera planta",
+        description: "Hasta 2 huéspedes · baño compartido.",
       },
     },
   },
   {
-    id: "room-003",
-    price: 120.0,
+    id: "room-800",
+    price: 89.0,
     category: "accommodation",
     t: {
       it: {
-        name: "Suite",
-        description: "Camera da letto separata, TV, frigobar e patio privato.",
+        name: "Camera 800 matrimoniale con doccia",
+        description: "Fino a 2 ospiti · bagno in camera.",
       },
       en: {
-        name: "Suite",
-        description: "Separate bedroom, TV, minibar and a private patio.",
+        name: "Camera 800 — double with shower",
+        description: "Up to 2 guests · en-suite bathroom.",
       },
       fr: {
-        name: "Suite",
-        description: "Chambre séparée, télévision, minibar et patio privé.",
+        name: "Camera 800 — double avec douche",
+        description: "Jusqu'à 2 personnes · salle de bains privative.",
       },
       de: {
-        name: "Suite",
-        description: "Separates Schlafzimmer, TV, Minibar und eigene Terrasse.",
+        name: "Camera 800 — Doppelzimmer mit Dusche",
+        description: "Bis zu 2 Gäste · eigenes Bad.",
       },
       es: {
-        name: "Suite",
-        description: "Dormitorio independiente, TV, minibar y patio privado.",
+        name: "Camera 800 — doble con ducha",
+        description: "Hasta 2 huéspedes · baño en la habitación.",
+      },
+    },
+  },
+  {
+    id: "room-cromoterapia",
+    price: 128.0,
+    category: "accommodation",
+    t: {
+      it: {
+        name: "Matrimoniale con vasca cromoterapia",
+        description: "Fino a 2 ospiti · bagno in camera.",
+      },
+      en: {
+        name: "Double with chromotherapy bath",
+        description: "Up to 2 guests · en-suite bathroom.",
+      },
+      fr: {
+        name: "Double avec baignoire chromothérapie",
+        description: "Jusqu'à 2 personnes · salle de bains privative.",
+      },
+      de: {
+        name: "Doppelzimmer mit Farblichttherapie-Wanne",
+        description: "Bis zu 2 Gäste · eigenes Bad.",
+      },
+      es: {
+        name: "Doble con bañera de cromoterapia",
+        description: "Hasta 2 huéspedes · baño en la habitación.",
+      },
+    },
+  },
+  {
+    id: "room-folletti",
+    price: 100.0,
+    category: "accommodation",
+    t: {
+      it: {
+        name: "Matrimoniale Folletti & Cherubini",
+        description: "Fino a 2 ospiti · bagno condiviso.",
+      },
+      en: {
+        name: "Folletti & Cherubini double",
+        description: "Up to 2 guests · shared bathroom.",
+      },
+      fr: {
+        name: "Chambre double Folletti & Cherubini",
+        description: "Jusqu'à 2 personnes · salle de bains partagée.",
+      },
+      de: {
+        name: "Doppelzimmer Folletti & Cherubini",
+        description: "Bis zu 2 Gäste · Gemeinschaftsbad.",
+      },
+      es: {
+        name: "Doble Folletti & Cherubini",
+        description: "Hasta 2 huéspedes · baño compartido.",
+      },
+    },
+  },
+  {
+    id: "tenda-eden",
+    price: 60.0,
+    category: "accommodation",
+    t: {
+      it: {
+        name: "Tenda tripla nel Giardino dell'Eden",
+        description: "Fino a 3 ospiti · bagno condiviso.",
+      },
+      en: {
+        name: "Triple tent in the Garden of Eden",
+        description: "Up to 3 guests · shared bathroom.",
+      },
+      fr: {
+        name: "Tente triple dans le Jardin d'Éden",
+        description: "Jusqu'à 3 personnes · salle de bains partagée.",
+      },
+      de: {
+        name: "Dreibettzelt im Garten Eden",
+        description: "Bis zu 3 Gäste · Gemeinschaftsbad.",
+      },
+      es: {
+        name: "Tienda triple en el Jardín del Edén",
+        description: "Hasta 3 huéspedes · baño compartido.",
+      },
+    },
+  },
+  {
+    id: "room-tripla",
+    price: 108.0,
+    category: "accommodation",
+    t: {
+      it: {
+        name: "Tripla (letto singolo + una piazza e mezza)",
+        description: "Fino a 3 ospiti · bagno condiviso.",
+      },
+      en: {
+        name: "Triple (single bed + small double)",
+        description: "Up to 3 guests · shared bathroom.",
+      },
+      fr: {
+        name: "Triple (lit simple + lit une place et demie)",
+        description: "Jusqu'à 3 personnes · salle de bains partagée.",
+      },
+      de: {
+        name: "Dreibettzimmer (Einzelbett + Französisches Bett)",
+        description: "Bis zu 3 Gäste · Gemeinschaftsbad.",
+      },
+      es: {
+        name: "Triple (cama individual + cama de matrimonio pequeña)",
+        description: "Hasta 3 huéspedes · baño compartido.",
+      },
+    },
+  },
+  {
+    id: "piazzola-camper",
+    price: 20.0,
+    category: "accommodation",
+    t: {
+      it: {
+        name: "Piazzola camper, van o tenda da tetto",
+        description: "Fino a 6 ospiti · bagno condiviso.",
+      },
+      en: {
+        name: "Pitch for camper, van or roof tent",
+        description: "Up to 6 guests · shared bathroom.",
+      },
+      fr: {
+        name: "Emplacement camping-car, van ou tente de toit",
+        description: "Jusqu'à 6 personnes · salle de bains partagée.",
+      },
+      de: {
+        name: "Stellplatz für Wohnmobil, Van oder Dachzelt",
+        description: "Bis zu 6 Gäste · Gemeinschaftsbad.",
+      },
+      es: {
+        name: "Parcela para autocaravana, furgoneta o tienda de techo",
+        description: "Hasta 6 huéspedes · baño compartido.",
+      },
+    },
+  },
+  {
+    id: "apt-colline",
+    price: 160.0,
+    category: "accommodation",
+    t: {
+      it: {
+        name: "Apt. Colline & Cherubini",
+        description: "Fino a 7 ospiti · bagno privato esterno.",
+      },
+      en: {
+        name: "Colline & Cherubini apartment",
+        description: "Up to 7 guests · private bathroom outside the room.",
+      },
+      fr: {
+        name: "Appartement Colline & Cherubini",
+        description:
+          "Jusqu'à 7 personnes · salle de bains privée à l'extérieur.",
+      },
+      de: {
+        name: "Apartment Colline & Cherubini",
+        description: "Bis zu 7 Gäste · eigenes Bad außerhalb des Zimmers.",
+      },
+      es: {
+        name: "Apartamento Colline & Cherubini",
+        description: "Hasta 7 huéspedes · baño privado fuera de la habitación.",
       },
     },
   },

@@ -18,7 +18,8 @@ export function isLocale(value: string): value is Locale {
 export const dictionaries = {
   it: {
     lang: "it",
-    tagline: "Uova naturali, miele artigianale e ospitalità nel cuore delle Marche.",
+    tagline:
+      "Uova naturali, miele artigianale e ospitalità nel cuore delle Marche.",
     goToShop: "Vai al negozio",
     shopTitle: "Negozio Ca' Paradiso",
     from: "da",
@@ -52,10 +53,15 @@ export const dictionaries = {
     backHome: "Torna alla home",
     footerTagline: "Agriturismo e prodotti artigianali",
     contact: "Contatti",
+    cleaningNote:
+      "Pulizie finali da 30 a 60 € secondo l'alloggio, da pagare in struttura. Colazione su richiesta.",
+    availabilityNote:
+      "La disponibilità viene confermata via email: se le date non fossero libere, l'importo viene rimborsato per intero.",
   },
   en: {
     lang: "en",
-    tagline: "Free-range eggs, artisan honey and farm stays in the heart of Le Marche.",
+    tagline:
+      "Free-range eggs, artisan honey and farm stays in the heart of Le Marche.",
     goToShop: "Go to the shop",
     shopTitle: "Ca' Paradiso Shop",
     from: "from",
@@ -84,11 +90,16 @@ export const dictionaries = {
     nav: { shop: "Shop", cart: "Cart", contact: "Contact" },
     successTitle: "Payment complete",
     successLead: "Thank you for choosing Ca' Paradiso Cagli",
-    successEmail: "You'll receive a confirmation email with your order details.",
+    successEmail:
+      "You'll receive a confirmation email with your order details.",
     successBooking: "For stays, we'll email you to confirm the dates.",
     backHome: "Back to home",
     footerTagline: "Farmhouse and artisan produce",
     contact: "Contact",
+    cleaningNote:
+      "Final cleaning from €30 to €60 depending on the unit, payable on arrival. Breakfast on request.",
+    availabilityNote:
+      "Availability is confirmed by email: if your dates turn out to be taken, you are refunded in full.",
   },
   fr: {
     lang: "fr",
@@ -121,15 +132,22 @@ export const dictionaries = {
     nav: { shop: "Boutique", cart: "Panier", contact: "Contact" },
     successTitle: "Paiement effectué",
     successLead: "Merci d'avoir choisi Ca' Paradiso Cagli",
-    successEmail: "Vous recevrez un e-mail de confirmation avec le détail de votre commande.",
-    successBooking: "Pour les séjours, nous vous écrirons pour confirmer les dates.",
+    successEmail:
+      "Vous recevrez un e-mail de confirmation avec le détail de votre commande.",
+    successBooking:
+      "Pour les séjours, nous vous écrirons pour confirmer les dates.",
     backHome: "Retour à l'accueil",
     footerTagline: "Ferme-auberge et produits artisanaux",
     contact: "Contact",
+    cleaningNote:
+      "Ménage de fin de séjour de 30 à 60 € selon le logement, à régler sur place. Petit-déjeuner sur demande.",
+    availabilityNote:
+      "La disponibilité est confirmée par e-mail : si vos dates ne sont plus libres, vous êtes intégralement remboursé.",
   },
   de: {
     lang: "de",
-    tagline: "Eier aus Freilandhaltung, handwerklicher Honig und Urlaub im Herzen der Marken.",
+    tagline:
+      "Eier aus Freilandhaltung, handwerklicher Honig und Urlaub im Herzen der Marken.",
     goToShop: "Zum Shop",
     shopTitle: "Ca' Paradiso Hofladen",
     from: "ab",
@@ -157,16 +175,23 @@ export const dictionaries = {
     checkoutError: "Bei der Zahlung ist ein Fehler aufgetreten",
     nav: { shop: "Hofladen", cart: "Warenkorb", contact: "Kontakt" },
     successTitle: "Zahlung abgeschlossen",
-    successLead: "Danke, dass Sie sich für Ca' Paradiso Cagli entschieden haben",
+    successLead:
+      "Danke, dass Sie sich für Ca' Paradiso Cagli entschieden haben",
     successEmail: "Sie erhalten eine Bestätigungsmail mit den Bestelldetails.",
-    successBooking: "Für Übernachtungen melden wir uns per E-Mail zur Bestätigung der Daten.",
+    successBooking:
+      "Für Übernachtungen melden wir uns per E-Mail zur Bestätigung der Daten.",
     backHome: "Zurück zur Startseite",
     footerTagline: "Landgasthof und handwerkliche Erzeugnisse",
     contact: "Kontakt",
+    cleaningNote:
+      "Endreinigung je nach Unterkunft 30 bis 60 €, vor Ort zu zahlen. Frühstück auf Anfrage.",
+    availabilityNote:
+      "Die Verfügbarkeit wird per E-Mail bestätigt: Sind Ihre Daten bereits belegt, erhalten Sie den vollen Betrag zurück.",
   },
   es: {
     lang: "es",
-    tagline: "Huevos camperos, miel artesanal y alojamiento en el corazón de Le Marche.",
+    tagline:
+      "Huevos camperos, miel artesanal y alojamiento en el corazón de Le Marche.",
     goToShop: "Ir a la tienda",
     shopTitle: "Tienda Ca' Paradiso",
     from: "desde",
@@ -195,11 +220,17 @@ export const dictionaries = {
     nav: { shop: "Tienda", cart: "Cesta", contact: "Contacto" },
     successTitle: "Pago completado",
     successLead: "Gracias por elegir Ca' Paradiso Cagli",
-    successEmail: "Recibirás un correo de confirmación con los detalles del pedido.",
-    successBooking: "Para el alojamiento te escribiremos para confirmar las fechas.",
+    successEmail:
+      "Recibirás un correo de confirmación con los detalles del pedido.",
+    successBooking:
+      "Para el alojamiento te escribiremos para confirmar las fechas.",
     backHome: "Volver al inicio",
     footerTagline: "Agroturismo y productos artesanales",
     contact: "Contacto",
+    cleaningNote:
+      "Limpieza final de 30 a 60 € según el alojamiento, a pagar en el establecimiento. Desayuno bajo petición.",
+    availabilityNote:
+      "La disponibilidad se confirma por correo: si las fechas ya no están libres, se te devuelve el importe íntegro.",
   },
 } as const;
 

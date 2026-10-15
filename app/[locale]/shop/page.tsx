@@ -31,9 +31,13 @@ export default async function ShopPage({
   const products = getProducts(locale);
 
   const sections = [
-    { title: t.eggs, category: "eggs" as const },
-    { title: t.honey, category: "honey" as const },
-    { title: t.rooms, category: "accommodation" as const },
+    { title: t.eggs, category: "eggs" as const, notes: [] as string[] },
+    { title: t.honey, category: "honey" as const, notes: [] as string[] },
+    {
+      title: t.rooms,
+      category: "accommodation" as const,
+      notes: [t.cleaningNote, t.availabilityNote],
+    },
   ];
 
   return (
@@ -43,7 +47,14 @@ export default async function ShopPage({
 
         {sections.map((section) => (
           <section key={section.category} className="mb-16">
-            <h2 className="mb-6 text-3xl font-bold">{section.title}</h2>
+            <h2 className="mb-4 text-3xl font-bold">{section.title}</h2>
+            {section.notes.length > 0 && (
+              <div className="mb-6 space-y-1 rounded-lg bg-amber-50 p-4 text-sm text-neutral-700">
+                {section.notes.map((note) => (
+                  <p key={note}>{note}</p>
+                ))}
+              </div>
+            )}
             <div className="grid gap-6 sm:grid-cols-2">
               {products
                 .filter((p) => p.category === section.category)
