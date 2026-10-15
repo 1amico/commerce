@@ -2,16 +2,23 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import type { Product } from "lib/products";
+import type { Dictionary } from "lib/i18n";
+import type { LocalizedProduct } from "lib/products";
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({
+  product,
+  t,
+}: {
+  product: LocalizedProduct;
+  t: Dictionary;
+}) {
   const isRoom = product.category === "accommodation";
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
 
   const addToCart = () => {
     if (isRoom && (!checkIn || !checkOut)) {
-      toast.error("Seleziona le date di arrivo e partenza");
+      toast.error(t.pickDates);
       return;
     }
 
@@ -22,7 +29,7 @@ export function ProductCard({ product }: { product: Product }) {
           (1000 * 60 * 60 * 24)
       );
       if (nights < 1) {
-        toast.error("La partenza deve essere successiva all'arrivo");
+        toast.error(t.badDates);
         return;
       }
     }
@@ -44,9 +51,8 @@ export function ProductCard({ product }: { product: Product }) {
       cart.push({
         id: product.id,
         name: isRoom
-          ? `${product.name} (${checkIn} → ${checkOut}, ${nights} notti)`
+          ? `${product.name} (${checkIn} → ${checkOut}, ${nights} ${t.nights})`
           : product.name,
-        description: product.description,
         price: product.price,
         quantity: nights,
         checkIn,
@@ -54,8 +60,10 @@ export function ProductCard({ product }: { product: Product }) {
       });
     }
 
-    localStorage.setItem("cart", JSON.stringify(cart));
-    toast.success(`${product.name} aggiunto al carrello`);
+    try {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    } catch {}
+    toast.success(`${product.name} — ${t.addedToCart}`);
   };
 
   const today = new Date().toISOString().split("T")[0];
@@ -68,7 +76,7 @@ export function ProductCard({ product }: { product: Product }) {
       {isRoom && (
         <div className="mb-4 grid gap-3 sm:grid-cols-2">
           <label className="text-sm">
-            Arrivo
+            {t.arrival}
             <input
               type="date"
               min={today}
@@ -78,7 +86,7 @@ export function ProductCard({ product }: { product: Product }) {
             />
           </label>
           <label className="text-sm">
-            Partenza
+            {t.departure}
             <input
               type="date"
               min={checkIn || today}
@@ -96,7 +104,7 @@ export function ProductCard({ product }: { product: Product }) {
           {isRoom && (
             <span className="text-sm font-normal text-neutral-500">
               {" "}
-              / notte
+              {t.perNight}
             </span>
           )}
         </span>
@@ -104,7 +112,7 @@ export function ProductCard({ product }: { product: Product }) {
           onClick={addToCart}
           className="rounded bg-black px-4 py-2 text-white hover:bg-neutral-800"
         >
-          {isRoom ? "Prenota" : "Aggiungi"}
+          {isRoom ? t.book : t.add}
         </button>
       </div>
     </div>

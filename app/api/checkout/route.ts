@@ -1,9 +1,12 @@
 import Stripe from "stripe";
-import { getProductById } from "lib/products";
+import { defaultLocale, isLocale } from "lib/i18n";
+import { getProductById, localize } from "lib/products";
 import { baseUrl } from "lib/utils";
 
 export async function POST(request: Request) {
-  const { items } = await request.json();
+  const { items, locale: rawLocale } = await request.json();
+  const locale = isLocale(rawLocale) ? rawLocale : defaultLocale;
+
   if (!Array.isArray(items) || items.length === 0) {
     return Response.json({ error: "Carrello vuoto" }, { status: 400 });
   }
@@ -24,15 +27,17 @@ export async function POST(request: Request) {
       return Response.json({ error: "Quantità non valida" }, { status: 400 });
     }
 
+    const { name, description } = localize(product, locale);
+
     lineItems.push({
       price_data: {
         currency: "eur",
         product_data: {
           name:
             product.category === "accommodation" && item.checkIn
-              ? `${product.name} (${item.checkIn} → ${item.checkOut})`
-              : product.name,
-          description: product.description,
+              ? `${name} (${item.checkIn} → ${item.checkOut})`
+              : name,
+          description,
         },
         unit_amount: Math.round(product.price * 100),
       },
@@ -50,9 +55,10 @@ export async function POST(request: Request) {
   try {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+      locale,
       line_items: lineItems,
-      success_url: `${baseUrl}/success`,
-      cancel_url: `${baseUrl}/cart`,
+      success_url: `${baseUrl}/${locale}/success`,
+      cancel_url: `${baseUrl}/${locale}/cart`,
     });
 
     return Response.json({ url: session.url });
