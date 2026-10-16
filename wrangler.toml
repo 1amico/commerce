@@ -1,29 +1,2 @@
 name = "commerce-caparadiso"
-type = "javascript"
 compatibility_date = "2024-12-19"
-
-[build]
-command = "npm run build"
-
-[env.production]
-name = "commerce-caparadiso-production"
-routes = [
-  { pattern = "negozio.caparadiso.com/*", zone_name = "caparadiso.com" },
-  { pattern = "shop.caparadiso.com/*", zone_name = "caparadiso.com" },
-  { pattern = "boutique.caparadiso.com/*", zone_name = "caparadiso.com" },
-  { pattern = "hofladen.caparadiso.com/*", zone_name = "caparadiso.com" },
-  { pattern = "tienda.caparadiso.com/*", zone_name = "caparadiso.com" },
-  { pattern = "www.caparadiso.com/*", zone_name = "caparadiso.com" },
-  { pattern = "caparadiso.com/*", zone_name = "caparadiso.com" },
-]
-
-[[env.production.vars]]
-name = "CATALOGUE_SHEET_URL"
-
-[[env.production.env_vars]]
-name = "STRIPE_SECRET_KEY"
-type = "secret"
-
-[[env.production.env_vars]]
-name = "STRIPE_PUBLIC_KEY"
-type = "secret"
