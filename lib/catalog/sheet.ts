@@ -58,7 +58,12 @@ export function parseCatalogueCsv(csv: string): Product[] {
 
     const brand = row[col("brand")]?.trim();
     const image = row[col("image")]?.trim();
-    const soldOut = (row[col("soldOut")] ?? "").trim().toLowerCase();
+    const yes = (v?: string) =>
+      ["si", "sì", "yes", "x", "true", "1"].includes(
+        (v ?? "").trim().toLowerCase(),
+      );
+    const soldOut = row[col("soldOut")];
+    const quoteOnly = row[col("quoteOnly")];
 
     products.push({
       id,
@@ -67,9 +72,8 @@ export function parseCatalogueCsv(csv: string): Product[] {
       t,
       ...(brand && { brand }),
       ...(image && { image }),
-      ...(["si", "sì", "yes", "x", "true", "1"].includes(soldOut) && {
-        soldOut: true,
-      }),
+      ...(yes(soldOut) && { soldOut: true }),
+      ...(yes(quoteOnly) && { quoteOnly: true }),
     });
   }
 
