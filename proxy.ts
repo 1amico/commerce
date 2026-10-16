@@ -8,6 +8,7 @@ export const config = {
 // Il layout ha bisogno della lingua già risolta: l'host da solo non basta,
 // perché un percorso /de su qualunque dominio deve restare in tedesco.
 const LOCALE_HEADER = "x-locale";
+const PATH_HEADER = "x-pathname";
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -16,6 +17,7 @@ export function proxy(request: NextRequest) {
   if (fromPath && isLocale(fromPath)) {
     const headers = new Headers(request.headers);
     headers.set(LOCALE_HEADER, fromPath);
+    headers.set(PATH_HEADER, pathname);
     return NextResponse.next({ request: { headers } });
   }
 
@@ -27,5 +29,6 @@ export function proxy(request: NextRequest) {
 
   const headers = new Headers(request.headers);
   headers.set(LOCALE_HEADER, locale);
+  headers.set(PATH_HEADER, url.pathname);
   return NextResponse.rewrite(url, { request: { headers } });
 }

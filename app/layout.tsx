@@ -31,7 +31,10 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
-  const fromMiddleware = (await headers()).get("x-locale") ?? "";
+  const head = await headers();
+  const fromMiddleware = head.get("x-locale") ?? "";
+  // La sezione EV ha una sua intestazione: parla a installatori, non a chi compra uova.
+  const isEv = (head.get("x-pathname") ?? "").includes("/ev");
   const locale = isLocale(fromMiddleware) ? fromMiddleware : defaultLocale;
   const t = getDictionary(locale);
 
@@ -41,7 +44,7 @@ export default async function RootLayout({
       className={`${GeistSans.variable} ${display.variable}`}
     >
       <body className="selection:bg-ochre/25">
-        <Navbar t={t} />
+        {!isEv && <Navbar t={t} />}
         <main>
           {children}
           <Toaster closeButton />
