@@ -26,7 +26,7 @@ export function ProductCard({
     if (isRoom) {
       nights = Math.ceil(
         (new Date(checkOut).getTime() - new Date(checkIn).getTime()) /
-          (1000 * 60 * 60 * 24)
+          (1000 * 60 * 60 * 24),
       );
       if (nights < 1) {
         toast.error(t.badDates);
@@ -42,7 +42,7 @@ export function ProductCard({
     }
 
     const existing = cart.find(
-      (i) => i.id === product.id && i.checkIn === checkIn
+      (i) => i.id === product.id && i.checkIn === checkIn,
     );
 
     if (existing && !isRoom) {
@@ -67,6 +67,7 @@ export function ProductCard({
   };
 
   const today = new Date().toISOString().split("T")[0];
+  const quoteHref = `mailto:info@caparadiso.com?subject=${encodeURIComponent(product.name)}`;
   const dateField =
     "mt-1 w-full rounded-sm border border-line bg-cream px-3 py-2 text-ink";
 
@@ -121,20 +122,37 @@ export function ProductCard({
 
       <div className="flex items-end justify-between border-t border-line pt-5">
         <span className="font-display text-2xl text-ink">
-          €{product.price.toFixed(2)}
-          {isRoom && (
-            <span className="ml-1 font-sans text-xs tracking-wide text-ink-soft">
-              {t.perNight}
+          {product.quoteOnly ? (
+            <span className="font-sans text-sm tracking-wide text-ink-soft">
+              {t.priceOnRequest}
             </span>
+          ) : (
+            <>
+              €{product.price.toFixed(2)}
+              {isRoom && (
+                <span className="ml-1 font-sans text-xs tracking-wide text-ink-soft">
+                  {t.perNight}
+                </span>
+              )}
+            </>
           )}
         </span>
-        <button
-          onClick={addToCart}
-          disabled={product.soldOut}
-          className="rounded-sm bg-ink px-5 py-2.5 text-sm tracking-wide text-cream transition-colors hover:bg-olive disabled:cursor-not-allowed disabled:bg-line disabled:text-ink-soft"
-        >
-          {product.soldOut ? t.soldOut : isRoom ? t.book : t.add}
-        </button>
+        {product.quoteOnly ? (
+          <a
+            href={quoteHref}
+            className="rounded-sm border border-ink px-5 py-2.5 text-sm tracking-wide text-ink transition-colors hover:bg-ink hover:text-cream"
+          >
+            {t.requestQuote}
+          </a>
+        ) : (
+          <button
+            onClick={addToCart}
+            disabled={product.soldOut}
+            className="rounded-sm bg-ink px-5 py-2.5 text-sm tracking-wide text-cream transition-colors hover:bg-olive disabled:cursor-not-allowed disabled:bg-line disabled:text-ink-soft"
+          >
+            {product.soldOut ? t.soldOut : isRoom ? t.book : t.add}
+          </button>
+        )}
       </div>
     </article>
   );

@@ -62,6 +62,8 @@ export const dictionaries = {
     sparkling: "Bollicine",
     oil: "Oli extravergine",
     evCharging: "Ricarica elettrica",
+    requestQuote: "Richiedi preventivo",
+    priceOnRequest: "Su richiesta",
   },
   en: {
     lang: "en",
@@ -110,6 +112,8 @@ export const dictionaries = {
     sparkling: "Sparkling wines",
     oil: "Extra virgin olive oils",
     evCharging: "EV charging",
+    requestQuote: "Request a quote",
+    priceOnRequest: "On request",
   },
   fr: {
     lang: "fr",
@@ -158,6 +162,8 @@ export const dictionaries = {
     sparkling: "Effervescents",
     oil: "Huiles d'olive vierge extra",
     evCharging: "Recharge électrique",
+    requestQuote: "Demander un devis",
+    priceOnRequest: "Sur demande",
   },
   de: {
     lang: "de",
@@ -207,6 +213,8 @@ export const dictionaries = {
     sparkling: "Schaumweine",
     oil: "Native Olivenöle extra",
     evCharging: "E-Auto-Ladelösungen",
+    requestQuote: "Angebot anfordern",
+    priceOnRequest: "Auf Anfrage",
   },
   es: {
     lang: "es",
@@ -256,6 +264,8 @@ export const dictionaries = {
     sparkling: "Espumosos",
     oil: "Aceites de oliva virgen extra",
     evCharging: "Recarga eléctrica",
+    requestQuote: "Solicitar presupuesto",
+    priceOnRequest: "Bajo pedido",
   },
 } as const;
 

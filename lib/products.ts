@@ -1,4 +1,6 @@
+import { caLeSuore } from "./catalog/ca-le-suore";
 import { collinaDelleFate } from "./catalog/collina-delle-fate";
+import { teltonika } from "./catalog/teltonika";
 import { fetchCatalogue } from "./catalog/sheet";
 import type { Locale } from "./i18n";
 
@@ -22,6 +24,8 @@ export interface Product {
   /** Marchio del produttore, quando rivendiamo per conto di qualcun altro. */
   brand?: string;
   soldOut?: boolean;
+  /** Prodotti senza listino pubblico: si richiede un preventivo, non si comprano. */
+  quoteOnly?: boolean;
 }
 
 export interface LocalizedProduct {
@@ -33,6 +37,7 @@ export interface LocalizedProduct {
   image?: string;
   brand?: string;
   soldOut?: boolean;
+  quoteOnly?: boolean;
 }
 
 export const products: Product[] = [
@@ -444,7 +449,12 @@ export const products: Product[] = [
 ];
 
 /** Catalogo compilato nel codice: vale da riserva se il foglio non risponde. */
-export const catalogue: Product[] = [...products, ...collinaDelleFate];
+export const catalogue: Product[] = [
+  ...products,
+  ...collinaDelleFate,
+  ...caLeSuore,
+  ...teltonika,
+];
 
 export async function getCatalogue(): Promise<Product[]> {
   return (await fetchCatalogue()) ?? catalogue;
@@ -464,6 +474,7 @@ export function localize(product: Product, locale: Locale): LocalizedProduct {
     image: product.image,
     brand: product.brand,
     soldOut: product.soldOut,
+    quoteOnly: product.quoteOnly,
     ...product.t[locale],
   };
 }

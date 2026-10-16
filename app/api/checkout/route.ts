@@ -1,8 +1,20 @@
 import Stripe from "stripe";
 import { defaultLocale, isLocale } from "lib/i18n";
-import { getProductById, localize } from "lib/products";
-import { shippingCountries, toStripeShippingOptions } from "lib/shipping";
+import { getProductById, localize, type Product } from "lib/products";
+import {
+  cartWeightKg,
+  shippableCountries,
+  shippingOptionsFor,
+} from "lib/shipping";
 import { baseUrl } from "lib/utils";
+
+const AGE_CONFIRMATION: Record<string, string> = {
+  it: "Confermo di avere almeno 18 anni. La vendita di alcolici ai minori è vietata.",
+  en: "I confirm that I am at least 18 years old. Sale of alcohol to minors is prohibited.",
+  fr: "Je confirme avoir au moins 18 ans. La vente d'alcool aux mineurs est interdite.",
+  de: "Ich bestätige, dass ich mindestens 18 Jahre alt bin. Der Verkauf von Alkohol an Minderjährige ist verboten.",
+  es: "Confirmo que tengo al menos 18 años. La venta de alcohol a menores está prohibida.",
+};
 
 export async function POST(request: Request) {
   const { items, locale: rawLocale } = await request.json();
@@ -14,13 +26,20 @@ export async function POST(request: Request) {
 
   // I prezzi vengono sempre dal catalogo server, mai dal client.
   const lineItems = [];
-  let needsShipping = false;
+  const lines: { product: Product; quantity: number }[] = [];
+
   for (const item of items) {
     const product = await getProductById(item?.id);
     if (!product) {
       return Response.json(
         { error: `Prodotto non valido: ${item?.id}` },
-        { status: 400 }
+        { status: 400 },
+      );
+    }
+    if (product.quoteOnly || product.soldOut) {
+      return Response.json(
+        { error: `Prodotto non acquistabile online: ${product.id}` },
+        { status: 400 },
       );
     }
 
@@ -29,9 +48,8 @@ export async function POST(request: Request) {
       return Response.json({ error: "Quantità non valida" }, { status: 400 });
     }
 
-    if (product.category !== "accommodation") needsShipping = true;
-
     const { name, description } = localize(product, locale);
+    lines.push({ product, quantity });
 
     lineItems.push({
       price_data: {
@@ -54,6 +72,10 @@ export async function POST(request: Request) {
     return Response.json({ error: "Stripe non configurato" }, { status: 500 });
   }
 
+  const categories = [...new Set(lines.map((l) => l.product.category))];
+  const physical = categories.filter((c) => c !== "accommodation");
+  const hasAlcohol = categories.some((c) => c === "wine" || c === "sparkling");
+
   const stripe = new Stripe(secretKey);
 
   try {
@@ -63,13 +85,27 @@ export async function POST(request: Request) {
       line_items: lineItems,
       success_url: `${baseUrl}/${locale}/success`,
       cancel_url: `${baseUrl}/${locale}/cart`,
-      // Un soggiorno non si spedisce: le opzioni compaiono solo se nel
-      // carrello c'è almeno un prodotto fisico.
-      ...(needsShipping && {
+      // Un soggiorno non si spedisce: indirizzo e corriere compaiono solo se
+      // nel carrello c'è merce fisica.
+      ...(physical.length > 0 && {
         shipping_address_collection: {
-          allowed_countries: [...shippingCountries],
+          allowed_countries: shippableCountries(
+            physical,
+          ) as Stripe.Checkout.SessionCreateParams.ShippingAddressCollection.AllowedCountry[],
         },
-        shipping_options: toStripeShippingOptions(locale),
+        shipping_options: shippingOptionsFor(
+          cartWeightKg(lines),
+          physical,
+          locale,
+        ),
+      }),
+      ...(hasAlcohol && {
+        consent_collection: { terms_of_service: "required" as const },
+        custom_text: {
+          terms_of_service_acceptance: {
+            message: AGE_CONFIRMATION[locale] ?? AGE_CONFIRMATION.it!,
+          },
+        },
       }),
     });
 
@@ -78,7 +114,7 @@ export async function POST(request: Request) {
     console.error("Stripe checkout error:", error);
     return Response.json(
       { error: "Errore durante il checkout" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

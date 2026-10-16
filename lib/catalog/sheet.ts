@@ -42,7 +42,7 @@ export function parseCatalogueCsv(csv: string): Product[] {
     }
 
     const price = Number.parseFloat(
-      (row[priceCol] ?? "").replace(",", ".").replace(/[^\d.]/g, "")
+      (row[priceCol] ?? "").replace(",", ".").replace(/[^\d.]/g, ""),
     );
     if (!Number.isFinite(price) || price < 0) {
       throw new Error(`prezzo non valido per ${id}`);
@@ -86,7 +86,10 @@ export async function fetchCatalogue(): Promise<Product[] | null> {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return parseCatalogueCsv(await res.text());
   } catch (error) {
-    console.error("Catalogo dal foglio non caricato, uso quello interno:", error);
+    console.error(
+      "Catalogo dal foglio non caricato, uso quello interno:",
+      error,
+    );
     return null;
   }
 }
