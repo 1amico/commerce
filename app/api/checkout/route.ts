@@ -1,4 +1,5 @@
 import Stripe from "stripe";
+import { normaliseRef } from "lib/affiliate";
 import { defaultLocale, isLocale } from "lib/i18n";
 import { getProductById, localize, type Product } from "lib/products";
 import {
@@ -17,7 +18,8 @@ const AGE_CONFIRMATION: Record<string, string> = {
 };
 
 export async function POST(request: Request) {
-  const { items, locale: rawLocale } = await request.json();
+  const { items, locale: rawLocale, ref: rawRef } = await request.json();
+  const ref = normaliseRef(rawRef);
   const locale = isLocale(rawLocale) ? rawLocale : defaultLocale;
 
   if (!Array.isArray(items) || items.length === 0) {
@@ -83,6 +85,7 @@ export async function POST(request: Request) {
       mode: "payment",
       locale,
       line_items: lineItems,
+      ...(ref && { metadata: { affiliate: ref } }),
       success_url: `${baseUrl}/${locale}/success`,
       cancel_url: `${baseUrl}/${locale}/cart`,
       // Un soggiorno non si spedisce: indirizzo e corriere compaiono solo se

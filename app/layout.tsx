@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 import "./globals.css";
+import { AffiliateCapture } from "components/affiliate-capture";
 import { Navbar } from "components/layout/navbar";
 import { defaultLocale, getDictionary, isLocale } from "lib/i18n";
 import { baseUrl } from "lib/utils";
@@ -39,12 +40,10 @@ export default async function RootLayout({
   const t = getDictionary(locale);
 
   return (
-    <html
-      lang={locale}
-      className={`${GeistSans.variable} ${display.variable}`}
-    >
+    <html lang={locale} className={`${GeistSans.variable} ${display.variable}`}>
       <body className="selection:bg-ochre/25">
         {!isEv && <Navbar t={t} />}
+        <AffiliateCapture />
         <main>
           {children}
           <Toaster closeButton />

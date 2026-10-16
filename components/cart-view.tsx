@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { AFFILIATE_COOKIE } from "lib/affiliate";
 import type { Dictionary, Locale } from "lib/i18n";
 
 interface CartItem {
@@ -34,13 +35,19 @@ export function CartView({ t, locale }: { t: Dictionary; locale: Locale }) {
 
   const total = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
 
+  const readRef = () =>
+    document.cookie
+      .split("; ")
+      .find((c) => c.startsWith(`${AFFILIATE_COOKIE}=`))
+      ?.split("=")[1] ?? null;
+
   const checkout = async () => {
     setBusy(true);
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items, locale }),
+        body: JSON.stringify({ items, locale, ref: readRef() }),
       });
       const data = await res.json();
       if (data.url) {
