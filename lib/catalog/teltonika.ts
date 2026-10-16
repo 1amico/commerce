@@ -10,6 +10,7 @@ export const teltonika: Product[] = [
     price: 0.0,
     category: "ev-charging",
     brand: "Teltonika Energy",
+    image: "/photos/ricarica-ev.webp",
     quoteOnly: true,
     t: {
       it: {
@@ -44,6 +45,7 @@ export const teltonika: Product[] = [
     price: 0.0,
     category: "ev-charging",
     brand: "Teltonika Energy",
+    image: "/photos/ricarica-ev.webp",
     quoteOnly: true,
     t: {
       it: {
@@ -78,6 +80,7 @@ export const teltonika: Product[] = [
     price: 0.0,
     category: "ev-charging",
     brand: "Teltonika Energy",
+    image: "/photos/ricarica-ev.webp",
     quoteOnly: true,
     t: {
       it: {

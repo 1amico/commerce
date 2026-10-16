@@ -45,6 +45,7 @@ export const products: Product[] = [
     id: "uova-001",
     price: 5.0,
     category: "eggs",
+    image: "/photos/galline.webp",
     t: {
       it: {
         name: "Uova naturali (confezione da 4)",
@@ -77,6 +78,7 @@ export const products: Product[] = [
     id: "uova-002",
     price: 6.5,
     category: "eggs",
+    image: "/photos/galline.webp",
     t: {
       it: {
         name: "Uova naturali (confezione da 6)",
@@ -109,6 +111,7 @@ export const products: Product[] = [
     id: "uova-003",
     price: 10.0,
     category: "eggs",
+    image: "/photos/galline.webp",
     t: {
       it: {
         name: "Uova naturali (confezione da 10)",
@@ -141,6 +144,7 @@ export const products: Product[] = [
     id: "miele-001",
     price: 12.0,
     category: "honey",
+    image: "/photos/campagna.webp",
     t: {
       it: {
         name: "Miele millefiori (500 g)",
@@ -173,6 +177,7 @@ export const products: Product[] = [
     id: "miele-002",
     price: 22.0,
     category: "honey",
+    image: "/photos/campagna.webp",
     t: {
       it: {
         name: "Miele millefiori (1 kg)",
@@ -205,6 +210,7 @@ export const products: Product[] = [
     id: "room-divano-singolo",
     price: 29.0,
     category: "accommodation",
+    image: "/photos/soggiorno.webp",
     t: {
       it: {
         name: "Divano Letto Singolo",
@@ -233,6 +239,7 @@ export const products: Product[] = [
     id: "room-divano-matrimoniale",
     price: 59.0,
     category: "accommodation",
+    image: "/photos/camera-matrimoniale.webp",
     t: {
       it: {
         name: "Divano Letto Matrimoniale 1º piano",
@@ -260,6 +267,7 @@ export const products: Product[] = [
     id: "room-800",
     price: 89.0,
     category: "accommodation",
+    image: "/photos/camera-800.webp",
     t: {
       it: {
         name: "Camera 800 matrimoniale con doccia",
@@ -287,6 +295,7 @@ export const products: Product[] = [
     id: "room-cromoterapia",
     price: 128.0,
     category: "accommodation",
+    image: "/photos/spa-cromoterapia.webp",
     t: {
       it: {
         name: "Matrimoniale con vasca cromoterapia",
@@ -314,6 +323,7 @@ export const products: Product[] = [
     id: "room-folletti",
     price: 100.0,
     category: "accommodation",
+    image: "/photos/camera-matrimoniale.webp",
     t: {
       it: {
         name: "Matrimoniale Folletti & Cherubini",
@@ -341,6 +351,7 @@ export const products: Product[] = [
     id: "tenda-eden",
     price: 60.0,
     category: "accommodation",
+    image: "/photos/amaca.webp",
     t: {
       it: {
         name: "Tenda tripla nel Giardino dell'Eden",
@@ -368,6 +379,7 @@ export const products: Product[] = [
     id: "room-tripla",
     price: 108.0,
     category: "accommodation",
+    image: "/photos/camera-tripla.webp",
     t: {
       it: {
         name: "Tripla (letto singolo + una piazza e mezza)",
@@ -395,6 +407,7 @@ export const products: Product[] = [
     id: "piazzola-camper",
     price: 20.0,
     category: "accommodation",
+    image: "/photos/campagna.webp",
     t: {
       it: {
         name: "Piazzola camper, van o tenda da tetto",
@@ -422,6 +435,7 @@ export const products: Product[] = [
     id: "apt-colline",
     price: 160.0,
     category: "accommodation",
+    image: "/photos/soggiorno.webp",
     t: {
       it: {
         name: "Apt. Colline & Cherubini",

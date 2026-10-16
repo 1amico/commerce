@@ -10,7 +10,7 @@ export const collinaDelleFate: Product[] = [
     price: 15.0,
     category: "wine",
     brand: "Collina delle Fate",
-    image: "/products/celeste.png",
+    image: "/products/celeste.webp",
     t: {
       it: {
         name: "Celeste",
@@ -44,7 +44,7 @@ export const collinaDelleFate: Product[] = [
     price: 15.5,
     category: "wine",
     brand: "Collina delle Fate",
-    image: "/products/alfresco.png",
+    image: "/products/alfresco.webp",
     soldOut: true,
     t: {
       it: {
@@ -142,7 +142,7 @@ export const collinaDelleFate: Product[] = [
     price: 46.0,
     category: "wine",
     brand: "Collina delle Fate",
-    image: "/products/adagio-esperienza.png",
+    image: "/products/adagio-esperienza.webp",
     t: {
       it: {
         name: "Adagio Esperienza (0,75 L)",
@@ -176,7 +176,7 @@ export const collinaDelleFate: Product[] = [
     price: 97.0,
     category: "wine",
     brand: "Collina delle Fate",
-    image: "/products/adagio-esperienza.png",
+    image: "/products/adagio-esperienza.webp",
     t: {
       it: {
         name: "Adagio Esperienza — Magnum (1,5 L)",
@@ -208,7 +208,7 @@ export const collinaDelleFate: Product[] = [
     price: 15.0,
     category: "wine",
     brand: "Collina delle Fate",
-    image: "/products/nina.png",
+    image: "/products/nina.webp",
     soldOut: true,
     t: {
       it: {
@@ -243,7 +243,7 @@ export const collinaDelleFate: Product[] = [
     price: 32.0,
     category: "wine",
     brand: "Collina delle Fate",
-    image: "/products/arte-sia.png",
+    image: "/products/arte-sia.webp",
     t: {
       it: {
         name: "Arte Sìa",
@@ -277,7 +277,7 @@ export const collinaDelleFate: Product[] = [
     price: 30.0,
     category: "sparkling",
     brand: "Collina delle Fate",
-    image: "/products/marte-extra-brut.png",
+    image: "/products/marte-extra-brut.webp",
     t: {
       it: {
         name: "M'Arte Extra Brut (0,75 L)",
@@ -307,7 +307,7 @@ export const collinaDelleFate: Product[] = [
     price: 55.0,
     category: "sparkling",
     brand: "Collina delle Fate",
-    image: "/products/marte-extra-brut.png",
+    image: "/products/marte-extra-brut.webp",
     t: {
       it: {
         name: "M'Arte Extra Brut — Magnum (1,5 L)",
@@ -336,7 +336,7 @@ export const collinaDelleFate: Product[] = [
     price: 157.0,
     category: "sparkling",
     brand: "Collina delle Fate",
-    image: "/products/marte-extra-brut.png",
+    image: "/products/marte-extra-brut.webp",
     t: {
       it: {
         name: "M'Arte Extra Brut — Jeroboam (3 L)",
@@ -369,7 +369,7 @@ export const collinaDelleFate: Product[] = [
     price: 308.0,
     category: "sparkling",
     brand: "Collina delle Fate",
-    image: "/products/marte-extra-brut.png",
+    image: "/products/marte-extra-brut.webp",
     t: {
       it: {
         name: "M'Arte Extra Brut — Mathusalem (6 L)",
@@ -398,7 +398,7 @@ export const collinaDelleFate: Product[] = [
     price: 57.0,
     category: "sparkling",
     brand: "Collina delle Fate",
-    image: "/products/marte-attesa.png",
+    image: "/products/marte-attesa.webp",
     t: {
       it: {
         name: "M'Arte L'Attesa 2015",
@@ -429,7 +429,7 @@ export const collinaDelleFate: Product[] = [
     price: 60.0,
     category: "sparkling",
     brand: "Collina delle Fate",
-    image: "/products/marte-attesa.png",
+    image: "/products/marte-attesa.webp",
     t: {
       it: {
         name: "M'Arte L'Attesa 2014",
@@ -460,7 +460,7 @@ export const collinaDelleFate: Product[] = [
     price: 20.5,
     category: "oil",
     brand: "Collina delle Fate",
-    image: "/products/olio-blend.png",
+    image: "/products/olio-blend.webp",
     t: {
       it: {
         name: "Olio EVO Cappuccini Blend",
@@ -494,7 +494,7 @@ export const collinaDelleFate: Product[] = [
     price: 23.0,
     category: "oil",
     brand: "Collina delle Fate",
-    image: "/products/olio-sinfolio.png",
+    image: "/products/olio-sinfolio.webp",
     t: {
       it: {
         name: "Olio EVO Sinfolio",
@@ -523,7 +523,7 @@ export const collinaDelleFate: Product[] = [
     price: 18.5,
     category: "oil",
     brand: "Collina delle Fate",
-    image: "/products/olio-arancia.png",
+    image: "/products/olio-arancia.webp",
     t: {
       it: {
         name: "Olio EVO Cappuccini all'arancia",
@@ -552,7 +552,7 @@ export const collinaDelleFate: Product[] = [
     price: 18.5,
     category: "oil",
     brand: "Collina delle Fate",
-    image: "/products/olio-limone.png",
+    image: "/products/olio-limone.webp",
     soldOut: true,
     t: {
       it: {
@@ -582,7 +582,7 @@ export const collinaDelleFate: Product[] = [
     price: 18.5,
     category: "oil",
     brand: "Collina delle Fate",
-    image: "/products/olio-peperoncino.png",
+    image: "/products/olio-peperoncino.webp",
     soldOut: true,
     t: {
       it: {
@@ -612,7 +612,7 @@ export const collinaDelleFate: Product[] = [
     price: 18.5,
     category: "oil",
     brand: "Collina delle Fate",
-    image: "/products/olio-basilico.png",
+    image: "/products/olio-basilico.webp",
     t: {
       it: {
         name: "Olio EVO Cappuccini al basilico",
