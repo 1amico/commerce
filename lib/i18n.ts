@@ -2,13 +2,14 @@ export const locales = ["it", "en", "fr", "de", "es"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "it";
 
-// Ogni sottodominio serve una lingua; il dominio nudo resta il sito esistente.
+// Ogni lingua ha il suo sottodominio, con la parola "negozio" nella lingua
+// di chi lo apre; il dominio nudo resta il sito dell'agriturismo.
 export const localeByHost: Record<string, Locale> = {
-  it: "it",
+  negozio: "it",
   shop: "en",
-  fr: "fr",
-  de: "de",
-  es: "es",
+  boutique: "fr",
+  hofladen: "de",
+  tienda: "es",
 };
 
 export function isLocale(value: string): value is Locale {
