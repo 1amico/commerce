@@ -39,7 +39,7 @@ export default async function SuccessPage({
           {t.backHome}
         </a>
       </div>
-      <Footer t={t} />
+      <Footer t={t} locale={locale} />
     </>
   );
 }

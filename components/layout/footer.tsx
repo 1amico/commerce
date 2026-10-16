@@ -1,7 +1,19 @@
 import Link from "next/link";
-import type { Dictionary } from "lib/i18n";
+import type { Dictionary, Locale } from "lib/i18n";
+import { getLegalDoc, legalPath } from "lib/legal";
 
-export default function Footer({ t }: { t: Dictionary }) {
+export default function Footer({
+  t,
+  locale,
+}: {
+  t: Dictionary;
+  locale: Locale;
+}) {
+  const legal = (["terms", "returns", "privacy"] as const).map((slug) => ({
+    href: legalPath(locale, slug),
+    label: getLegalDoc(locale, slug).title,
+  }));
+
   return (
     <footer
       id="contact"
@@ -41,8 +53,18 @@ export default function Footer({ t }: { t: Dictionary }) {
         </div>
       </div>
 
-      <div className="border-t border-line py-6 text-center text-xs tracking-wide">
-        &copy; {new Date().getFullYear()} Ca' Paradiso Cagli
+      <div className="border-t border-line">
+        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-6 gap-y-2 px-6 py-5 text-xs">
+          {legal.map((l) => (
+            <Link key={l.href} href={l.href} className="hover:text-ink">
+              {l.label}
+            </Link>
+          ))}
+        </div>
+        <p className="border-t border-line px-6 py-5 text-center text-xs leading-relaxed">
+          &copy; {new Date().getFullYear()} Siniscalco Matteo Azienda Agricola ·
+          Strada Monte Peruzzo 11, 61043 Cagli (PU) · info@caparadiso.com
+        </p>
       </div>
     </footer>
   );

@@ -103,7 +103,7 @@ export default async function HomePage({
         </div>
       </section>
 
-      <Footer t={t} />
+      <Footer t={t} locale={locale} />
     </>
   );
 }

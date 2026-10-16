@@ -20,7 +20,7 @@ export default async function CartPage({
   return (
     <>
       <CartView t={t} locale={locale} />
-      <Footer t={t} />
+      <Footer t={t} locale={locale} />
     </>
   );
 }

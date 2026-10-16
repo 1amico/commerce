@@ -77,7 +77,7 @@ export default async function ShopPage({
           </section>
         ))}
       </div>
-      <Footer t={t} />
+      <Footer t={t} locale={locale} />
     </>
   );
 }
