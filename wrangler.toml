@@ -1,0 +1,28 @@
+name = "commerce-caparadiso"
+type = "javascript"
+main = ".cloudflare/worker.js"
+site = { bucket = ".vercel/output/static" }
+build = { command = "npm run build", cwd = "." }
+env = { production = {} }
+
+[env.production]
+name = "commerce-caparadiso-production"
+routes = [
+  { pattern = "negozio.caparadiso.com/*", zone_name = "caparadiso.com" },
+  { pattern = "shop.caparadiso.com/*", zone_name = "caparadiso.com" },
+  { pattern = "boutique.caparadiso.com/*", zone_name = "caparadiso.com" },
+  { pattern = "hofladen.caparadiso.com/*", zone_name = "caparadiso.com" },
+  { pattern = "tienda.caparadiso.com/*", zone_name = "caparadiso.com" },
+]
+
+[[env.production.vars]]
+name = "STRIPE_SECRET_KEY"
+
+[[env.production.vars]]
+name = "CATALOGUE_SHEET_URL"
+
+[build]
+command = "npm run build && npx @cloudflare/next-on-pages"
+
+[env.production.build]
+command = "npm run build && npx @cloudflare/next-on-pages --compatibility-flags nodejs_compat"
