@@ -1,10 +1,9 @@
 name = "commerce-caparadiso"
 type = "javascript"
-main = ".cloudflare/worker.js"
 compatibility_date = "2024-12-19"
 
 [build]
-command = "npm run build && npx @cloudflare/next-on-pages --compatibility-flags nodejs_compat"
+command = "npm run build"
 
 [env.production]
 name = "commerce-caparadiso-production"
