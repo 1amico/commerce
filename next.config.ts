@@ -1,4 +1,5 @@
 export default {
+  output: 'export',
   experimental: {
     ppr: true,
     inlineCss: true,
