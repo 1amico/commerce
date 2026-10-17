@@ -1,0 +1,15 @@
+{
+  "name": "commerce",
+  "type": "javascript",
+  "main": "src/index.js",
+  "build": {
+    "cwd": ".",
+    "command": "npm run build",
+    "watch_paths": ["src/**/*.js"]
+  },
+  "env": {
+    "production": {
+      "name": "commerce"
+    }
+  }
+}
